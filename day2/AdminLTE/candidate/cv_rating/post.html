@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract Text and Files</title>
+</head>
+<body>
+
+<h2>Upload Form</h2>
+
+<form id="uploadForm" enctype="multipart/form-data">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <br>
+
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullname" required>
+
+    <br>
+
+    <label for="user_id">User ID:</label>
+    <input type="text" id="user_id" name="user_id" required>
+
+    <br>
+
+    <label for="job_id">Job ID:</label>
+    <input type="text" id="job_id" name="job_id" required>
+
+    <br>
+
+    <label for="cv_file_path">CV File Path:</label>
+    <input type="file" id="cv_file_path" name="cv_file_path" required>
+
+    <br>
+
+    <label for="fileInput">File Input:</label>
+    <input type="file" id="fileInput" name="file_input" accept=".txt, .pdf, .docx" required>
+
+    <br>
+
+    <button type="button" onclick="extractAndPostData()">Extract Data and Post</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    function extractAndPostData() {
+        // Extract text values
+        var email = document.getElementById('email').value;
+        var fullname = document.getElementById('fullname').value;
+        var user_id = document.getElementById('user_id').value;
+        var job_id = document.getElementById('job_id').value;
+
+        // Extract file values
+        var cv_file_path = document.getElementById('cv_file_path').files[0];
+        var file_input = document.getElementById('fileInput').files[0];
+
+        // Create FormData object
+        var formData = new FormData();
+
+        // Append text values to FormData
+        formData.append('email', email);
+        formData.append('fullname', fullname);
+        formData.append('user_id', user_id);
+        formData.append('job_id', job_id);
+
+        // Append file values to FormData
+        formData.append('cv', cv_file_path);
+        
+
+        // Make AJAX request to Flask server
+        $.ajax({
+            url: "http://localhost:8080/pdfs",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
