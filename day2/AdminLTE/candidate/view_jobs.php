@@ -10,12 +10,12 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				JOBS PAGE
+				MANAGE USERS
 				<small><?php //print_r($_POST);?></small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="manage_users.php"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active">View Jobs</li>
+				<li class="active">Manage Users</li>
 			</ol>
 			<hr style="border-color: green;"/>
 		</section>
@@ -57,7 +57,7 @@
 										    <thead>
 									    <tr>
 									        <th style="width:2px;">No.</th>
-									        <th>Job id</th>
+									        <th>Job code</th>
 									        <th>Job Title</th>
 									        <th>Deadline</th>
 									        <th>Status</th>
@@ -114,7 +114,7 @@
 			<!-- /.row (main row) -->
 
 		</section>
-		<!-- /.content -->
+
 
 	</div>
 
@@ -122,3 +122,4 @@
 
 <?php include('inc/footer.php'); ?>
 <?php include('../inc/scripts.php'); ?>
+

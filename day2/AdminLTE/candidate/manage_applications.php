@@ -311,11 +311,11 @@ if (isset($_GET['jobId'])) {
                 console.log(response);
                 if(response.message=='already applied for this job'){
                     alert('You have already applied for this job.')
-                    window.location.href = "http://http://localhost/day2/adminlte/candidate/manage_applications.php";
+                    window.location.href = "http://localhost/tnm_recruitment_portal/day2/adminlte/candidate/manage_applications.php";
                 }
                 else{
                     alert('Application submitted successfully!')
-                    window.location.href = "http://http://localhost/day2/adminlte/candidate/manage_applications.php";
+                    window.location.href = "http://localhost/tnm_recruitment_portal/day2/adminlte/candidate/manage_applications.php";
                 }
                 
             },

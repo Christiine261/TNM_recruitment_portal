@@ -72,36 +72,6 @@
 </div>
 
 
-
-<!-- modal for view jobs-->
-<div class="modal fade" id="view_jobs_<?php echo $row['job_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h4 class="modal-title" id="myModalLabel">view Details</h4></center>
-            </div>
-            <div class="modal-body">    
-                    
-            </div>
-            <div class="modal-footer">
-
-            <a href="view_job_details.php?job_id=<?php echo $row['job_id']; ?>" class="btn btn-flat btn-success pull-right">
-            <i class="fa fa-check-square-o"></i>&nbsp;&nbsp;<b>View</b>
-            </a>
-            <span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
-           
-                          
-                <button type="button" class="btn btn-flat btn-danger pull-right " data-dismiss="modal"><i class="fa fa-times-circle-o"></i>&nbsp;&nbsp;<b>CANCEL</b></button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
 <!-- Apply Modal -->
 <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -248,7 +218,7 @@
        
 
     include_once("inc/dbcon.php");
-    $user_id = 1;
+    $user_id = 4;
       
 
     $q = "SELECT * FROM users WHERE user_id = '$user_id'";
@@ -272,7 +242,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             
-            <form method="POST" class="form-horizontal" action="">
+           <!--  <form method="POST" class="form-horizontal" action=""> -->
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <center><h4 class="modal-title" id="myModalLabel">APPY FOR <?php echo $row['job_title']; ?> JOB POST</h4></center>
@@ -298,90 +268,93 @@
                         <input type="file" class="form-control" name="cover_letter_file_path" id="cover_letter_file_path" required>  
                     </div>
                     
-                    <input type="hidden" name="job_id" id="job_id" value="<?php echo $row['job_id']; ?>">
+                    <input type="text" name="jobId" class="form-control" id="jobId" value="<?php echo $row['job_id']; ?>">
                     
+                    <input type="text" id="userId" class="form-control" name="userId" value="<?php echo $user_id; ?>">
                                     
 
-                            
+                    <button type="submit" onclick="extractAndPostData()" class="btn btn-flat btn-success pull-right" name=""><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Apply</b></button><span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span> 
 
                     
                                     
                     
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" onclick="extractAndPostData()" class="btn btn-flat btn-success pull-right" name=""><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Apply</b></button><span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span>  
                                                     
                                                     
                     <button type="reset" class="btn btn-flat btn-danger pull-right " data-dismiss="modal"><i class="fa fa-times-circle-o"></i>&nbsp;&nbsp;<b>CANCEL</b></button>  
-                    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-                    <script>
-                        function extractAndPostData() {
-                            // Extract text values
-                            var email = document.getElementById('email').value;
-                            var fullname = document.getElementById('fullname').value;
-                            var user_id = document.getElementById('user_id').value;
-                            var job_id = document.getElementById('job_id').value;
 
-                            // Extract file values
-                            var cv_file_path = document.getElementById('cv_file_path').files[0];
-                            var file_input = document.getElementById('fileInput').files[0];
 
-                            // Create FormData object
-                            var formData = new FormData();
-
-                            // Append text values to FormData
-                            formData.append('email', email);
-                            formData.append('fullname', fullname);
-                            formData.append('user_id', user_id);
-                            formData.append('job_id', job_id);
-
-                            // Append file values to FormData
-                            formData.append('cv', cv_file_path);
-                            
-
-                            // Make AJAX request to Flask server
-                            $.ajax({
-                                url: "http://localhost:8080/pdfs",
-                                type: "POST",
-                                data: formData,
-                                contentType: false,
-                                processData: false,
-                                success: function(response) {
-                                    console.log(response);
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error("Error:", error);
-                                }
-                            });
-                        }
-                    </script>
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>         
+<script>
+                    
+	function extractAndPostData() {
+		var currentURL = window.location.replace;
+        // Create FormData object
+		var formData = new FormData();
+
+        // Extract file values
+		var cv_file_path = document.getElementById('cv_file_path').files[0];
+        if (cv_file_path) {
+            // Append file values to FormData
+            formData.append('cv', cv_file_path);
+        } else {
+            console.error('No file selected.');
+            // Handle the error or alert the user.
+            return;
+        }
+        formData.append('cv', cv_file_path);
+		// Extract text values
+		var jobId = document.getElementById('jobId').value;
+		var userId = document.getElementById('userId').value;
+		var email = document.getElementById('email').value;
+		var fullname = document.getElementById('fullname').value;
+		
+
+		
+		//const userId = getCookie('userId');
+		// Append text values to FormData
+		formData.append('email', email);
+		formData.append('fullname', fullname);
+		formData.append('user_id', userId);
+		formData.append('job_id', jobId);
+		// Append file values to FormData
+		
+		
+
+		// Make AJAX request to Flask server
+		$.ajax({
+			url: "http://localhost:8080/pdfs",
+			type: "POST",
+			data: formData,
+			contentType: false,
+			processData: false,
+			success: function(response) {
+				console.log(response);
+				if(response.message=='already applied for this job'){
+					alert('You have already applied for this job.')
+					window.location.href = "http://tnm_recruitment_portal/day2/adminlte/candidate/user_modal.php";
+				}
+				else{
+					alert('Application submitted successfully!')
+					window.location.href = "http://localhost/tnm_recruitment_portal/day2/adminlte/candidate/user_modal.php";
+				}
+				
+			},
+			error: function(xhr, status, error) {
+                console.log(formData);
+				console.error("Error:", error);
+				alert('Application failed. Error:  '+error)
+			}
+		});
+	}
+</script>
 
 
 
-<!--  modal for portfolio edit-->
-<div class="modal fade" id="edit_portfolio_<?php echo $row['user_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <center><h4 class="modal-title" id="myModalLabel">Edit Portfolio</h4></center>
-            </div>
-            <div class="modal-body">	
-            	 <p class="text-center">Edit Portfolio</p>
-				<h2 class="text-center"><?php echo $row['user_id']; ?></h2>
-			</div> -->
-            <div class="modal-footer">
-                <a href="edit_portfolio.php?userid=<?php echo $row['user_id']; ?>" class="btn btn-flat btn-success pull-right"><i class="fa fa-check"></i>&nbsp;&nbsp;<b>Edit</b></a><span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                <button type="button" class="btn btn-flat btn-danger pull-right " data-dismiss="modal"><i class="fa fa-times-circle-o"></i>&nbsp;&nbsp;<b>CANCEL</b></button>
-
-            </div>
-
-        </div>
-    </div>
-</div>
 

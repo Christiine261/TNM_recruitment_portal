@@ -151,7 +151,7 @@
 					<p>AVAILABLE JOB POSTS</p>
 					</div>
 					<div class="icon">
-					<i class="ion ion-bag"></i>
+					<i class="ion ion-briefcase"></i>
 					</div>
 					<a href="view_jobs.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
@@ -174,7 +174,7 @@
 					<p>My Applications</p>
 					</div>
 					<div class="icon">
-					<i class="ion ion-person-add"></i>
+					<i class="ion ion-document-text"></i>
 					</div>
 					<a href="manage_applications.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
@@ -187,7 +187,7 @@
 					<?php
 						include("inc/dbcon.php");
 						// Query to count the number of users Registered
-						$countQuery = "SELECT * FROM user_portfolio";
+						$countQuery = "SELECT * FROM user_portfolio WHERE user_id = '".$user['user_id']."'";
 						$result = $conn->query($countQuery);						
 					?>
 					<h3><?php echo $result->num_rows; ?></h3>
@@ -195,7 +195,7 @@
 					<p>My portfolios</p>
 					</div>
 					<div class="icon">
-					<i class="ion ion-pie-graph"></i>
+					<i class="ion ion-briefcase"></i>
 					</div>
 					<a href="manage_users.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 				</div>
