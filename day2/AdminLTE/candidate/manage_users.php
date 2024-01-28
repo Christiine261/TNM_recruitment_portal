@@ -1,4 +1,4 @@
-<script src="assets/custom/jobs.js"></script>
+
 
 <?php //include_once("session/session.php"); ?>
 <?php include('inc/header.php'); ?>
@@ -62,55 +62,56 @@ session_start();
 			<!-- Main row -->
 			<div class="row">
 				<div class="col-md-3">
+					
 
 					<!-- Profile Image -->
 					<div class="box box-primary">
-					<div class="box-body box-profile">
-						<img class="profile-user-img img-responsive img-circle" src="../assets/landingpage/img/profilePics/profile1.jpg<?php //echo $profile; ?>" alt="User profile picture" style="width: 250px; height: 250px;">
+						<div class="box-body box-profile">
+							<img class="profile-user-img img-responsive img-circle" src="uploads/<?php echo $profile; ?>" alt="User profile picture" style="width: 150px; height: 150px;">
 
-						<h3 class="profile-username text-center"><?php echo $name?></h3>
+							<h3 class="profile-username text-center"><?php echo $name?></h3>
 
-						<p class="text-muted text-center"><?php echo $profe?></p>
+							<p class="text-muted text-center"><?php echo $profe?></p>
 
 
-						<a href="<?php echo $cv ?>" class = "btn btn-success btn-block" target="_blank">View your CV</a>
-					</div>
-					<!-- /.box-body -->
+							<a href="<?php echo $cv ?>" class = "btn btn-success btn-block" target="_blank">View your CV</a>
+						</div>
+					
 					</div>
 					<!-- /.box -->
 
 					<!-- About Me Box -->
-					<div class="box box-primary">
-					<div class="box-header with-border">
-						<h3 class="box-title">About Me</h3>
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-						<strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+					<div class="box box-success">
+						<div class="box-header ">
+							<h3 class="box-title">About Me</h3>
+						</div>
+						<!-- /.box-header -->
+						<div class="box-body">
+							<strong><i class="fa fa-book margin-r-5"></i> Education</strong>
 
-						<p class="text-muted">
-						<?php echo $edu ?> from <?php echo $inst?>
-						</p>
+							<p class="text-muted">
+							<?php echo $edu ?> from <?php echo $inst?>
+							</p>
 
-						<hr>
+							<hr>
 
-						<strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+							<strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
 
-						<p class="text-muted"><?php echo $address?></p>
+							<p class="text-muted"><?php echo $address?></p>
 
-						<hr>
+							<hr>
 
-						<strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+							<strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
 
-						<p>
-						
-						<span class="label label-info"><?php echo $skills?></span>
-						
-						</p>
+							<p>
+							
+							<span class="label label-info"><?php echo $skills?></span>
+							
+							</p>
 
-						<hr>
-					</div>
-					<!-- /.box-body -->
+							<hr>
+						</div>
+						<!-- /.box-body -->
 					</div>
 					<!-- /.box -->
 				</div>
@@ -365,7 +366,7 @@ session_start();
 									<div class="col-md-12">
 
 										<!-- VIEW PORTFOLIO SECTION -->
-										<?php include("portfolio_view_copy.php"); ?>
+										<?php include("port_view.php"); ?>
 
 									</div>
 								</div>

@@ -63,7 +63,7 @@
 
             $activation_code = substr(str_shuffle($numbers), 0, 6);
             if (isset($_FILES["profilepic"]) && $_FILES["profilepic"]["error"] == 0) {
-                $targetDir = "../assets/landingpage/img/profilePics/";
+                $targetDir = "../candidate/uploads/";
                 $targetFile = $targetDir . basename($_FILES["profilepic"]["name"]);
         
                 if (move_uploaded_file($_FILES["profilepic"]["tmp_name"], $targetFile)) {

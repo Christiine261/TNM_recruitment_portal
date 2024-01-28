@@ -68,8 +68,8 @@
                                 <input type="password" class="form-control mt-2 mb-2" name="password_confirm" id="email" placeholder="Confirm Your Password" required>
                             </div>
                             <div class="form-group">
-                                <label for="Password">Profile picture(optional)</label>
-                                <input type="file" class="form-control mt-2 mb-2" name="profilepic" id="profilepic"  optional>
+                                <label for="profilepic">Profile picture(optional)</label>
+                                <input type="file" class="form-control mt-2 mb-2" name="profilepic" id="profilepic" accept = ".jpg, .png, .jpeg" optional>
                             </div>
                             
                             <div class="row">
