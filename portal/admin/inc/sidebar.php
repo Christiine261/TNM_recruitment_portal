@@ -5,7 +5,7 @@
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="pull-left image">
-			<img src="../assets/landingpage/img/hero-bg.jpg" class="img-circle" alt="User Image" style="height:50px;">
+			<img src="uploads/<?php echo $user['profile_picture']; ?>" class="img-circle" alt="User Image" style="height:50px; width: 50px;">
 			</div>
 			<div class="pull-left info">
 			<p> <?php echo $user['full_name'];?></p>
@@ -68,7 +68,12 @@
 						<span class="pull-right-container">
 						</span>
 					</a>
-				
+				</li>
+				<li>
+					<a href="manage_profile.php">
+						<i class="fa fa-user"></i> <span>Profile</span>
+					</a>
+				</li>
 
 			
 		</ul>

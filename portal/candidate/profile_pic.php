@@ -4,7 +4,7 @@
 		<label for="profilep">Update profile picture</label>
 		<input type="file" name="profilep" id="profilep" class="form-control" accept = ".jpg, .png, .jpeg">
 	</div>
-	<button type="submit" name="profilep_pic" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Update</button>
+	<button type="submit" name="profilep_pic" class="btn btn-success pull-right"><span class="glyphicon glyphicon-check"></span> Update</button>
 </form>
 
 
