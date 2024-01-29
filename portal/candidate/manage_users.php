@@ -67,7 +67,7 @@ session_start();
 					<!-- Profile Image -->
 					<div class="box box-primary">
 						<div class="box-body box-profile">
-							<img class="profile-user-img img-responsive img-circle" src="uploads/<?php echo $profile; ?>" alt="User profile picture" style="width: 150px; height: 150px;">
+							<img class="profile-user-img img-responsive img-circle" src="uploads/<?php echo $user['profile_picture']; ?>" alt="User profile picture" style="width: 150px; height: 150px;">
 
 							<h3 class="profile-username text-center"><?php echo $name?></h3>
 

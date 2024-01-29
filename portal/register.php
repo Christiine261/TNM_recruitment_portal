@@ -44,7 +44,7 @@
                         }
                     ?>
                     <div class="col-lg-4">
-                        <form action="inc/register_inc.php" method="post" role="form" class="form">
+                        <form action="inc/register_inc.php" method="post" role="form" class="form" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="form-group">
                                     <label for="Email" class="text-control">Full Name</label>
@@ -66,6 +66,10 @@
                             <div class="form-group">
                                 <label for="Password">Confirm Password</label>
                                 <input type="password" class="form-control mt-2 mb-2" name="password_confirm" id="email" placeholder="Confirm Your Password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profilepic">Profile picture(optional)</label>
+                                <input type="file" class="form-control mt-2 mb-2" name="profilepic" id="profilepic" accept = ".jpg, .png, .jpeg" optional>
                             </div>
                             
                             <div class="row">

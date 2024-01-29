@@ -1,4 +1,4 @@
-<?php session_start(); include('inc/header.php'); ?>
+<?php include('inc/header.php'); ?>
 <?php include('inc/navbar.php'); ?>
 <?php include('inc/sidebar.php'); ?>
 
@@ -27,61 +27,8 @@
 			<!--<hr style="border-color: green;"/> -->
 			<!-- Main row -->
 			<div class="row">
-<!-- 				<div class="col-md-3">
-					<form role="form" method="POST" action="" enctype="multipart/form-data">
-						
-						<div class="box box-success no-padding pull-left">
-							
-							<div class="box-header with-border">
-								
-								<h2 class="box-title pull-left"><b>NEW USER</b></h2>
-								<div class="row">
-									<div class="col-md-12">
-										
-									</div>
-								</div>
-							</div>
-							
-							
-							<div class="box-body">  
-								<div class="form-group">
-									<label for="exampleInputPassword1">Role</label>
-									<select class="form-control select2" name="" required>
-										<option selected="selected" disabled>Select user role</option>
-										<option >Admin</option>
-										<option >interviewer</option>
-																							
-									</select>
-								</div>     
-								<div class="form-group">
-									<label for="exampleInputPassword1">Full Name</label>
-									<input type="text" class="form-control" name="" placeholder="Enter Full Name" required>  
-								</div> 
-                     
-								<div class="form-group">
-									<label for="exampleInputPassword1">Email</label>
-									<input type="text" class="form-control" name="" placeholder="Enter Email" required>  
-								</div>    
-								<div class="form-group">
-									<label for="exampleInputPassword1">Contact</label>
-									<input type="text" class="form-control" name="" placeholder="Enter Contact" required>  
-								</div>                                                    
-								
-								
-							
-								               
-							</div>
-							
 
-							<div class="box-footer">                            
-								<button type="submit" class="btn btn-flat btn-success pull-right" name=""><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>ADD</b></button><span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span>                                           
-								<button type="reset" class="btn btn-flat btn-danger pull-right " data-dismiss="modal"><i class="fa fa-times-circle-o"></i>&nbsp;&nbsp;<b>CANCEL</b></button>  
-							</div>
-						
-						</div>
-						
-					</form>
-				</div> -->
+		
 				<div class="col-md-12">
 					<div class="box box-success">
 						<div class="box-header with-border">

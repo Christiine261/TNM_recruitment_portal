@@ -64,7 +64,7 @@ session_start();
 				<div class="col-md-3">
 
 					<!-- Profile Image -->
-					<div class="box box-primary">
+					<div class="box box-success">
 						<div class="box-body box-profile">
 							<img class="profile-user-img img-responsive img-circle" src="uploads/<?php echo $profile; ?>" alt="User profile picture" style="width: 150px; height: 150px;">
 
@@ -115,7 +115,7 @@ session_start();
 					<!-- /.box -->
 				</div>
 				<div class="col-xs-9">
-					<div class="nav-tabs-custom">
+					<div class="nav-tabs-custom success">
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#fa-icons" data-toggle="tab" aria-expanded="true">Change Password</a></li>
 							<li class=""><a href="#glyphicons" data-toggle="tab" aria-expanded="false">Update profile picture</a></li>

@@ -62,10 +62,20 @@
             $user_code = substr(str_shuffle($letters), 0, 2).substr(str_shuffle($numbers), 0, 5).substr(str_shuffle($letters), 0, 2).substr(str_shuffle($numbers), 0, 5);
 
             $activation_code = substr(str_shuffle($numbers), 0, 6);
+            if (isset($_FILES["profilepic"]) && $_FILES["profilepic"]["error"] == 0) {
+                $targetDir = "../candidate/uploads/";
+                $targetFile = $targetDir . basename($_FILES["profilepic"]["name"]);
+        
+                if (move_uploaded_file($_FILES["profilepic"]["tmp_name"], $targetFile)) {
+                    echo "Profile picture uploaded successfully.";
+                    $profilePicFileName = basename($_FILES["profilepic"]["name"]);
+                } else {
+                    echo "Error uploading profile picture.";
+                }
+            } 
            
-            
-            #$sqs = $conn->query("INSERT INTO users (user_id, user_code, full_name, email, password, role, activation_code, activation_status,  status, date_created) VALUES('', '$user_code', '$full_name', '$email', '$hashed_password', $activation_code, $activation_status, '$status', '$role', NOW())");
-            $sqs = "INSERT INTO users(user_id, user_code, full_name, email, password, role, activation_code, activation_status, status, date_created) VALUES('', '$user_code', '$full_name', '$email', '$hashed_password','$role', '$activation_code', '$activation_status', '$status', NOW())";
+        
+            $sqs = "INSERT INTO users(user_id, user_code, full_name, email, password, profile_picture, role, activation_code, activation_status, status, date_created) VALUES('', '$user_code', '$full_name', '$email', '$hashed_password', '$profilePicFileName', '$role', '$activation_code', '$activation_status', '$status', NOW())";
             $que = $conn->query($sqs);
             
             

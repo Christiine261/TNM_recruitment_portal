@@ -172,7 +172,7 @@ if (isset($_GET['jobId'])) {
 							<h2 class="box-title pull-left"><b>My Applications</b></h2>
 							
 							<div class="box-tools pull-right">
-								<a data-target="#import_users" data-toggle="modal" class="btn btn-flat btn-success pull-right"><i class="fa fa-upload"></i><span>&nbsp;<b>UPLOAD</b></span></a><br/>
+								
 							</div>
 						</div>
 						<!-- /.box-header -->
@@ -266,16 +266,7 @@ if (isset($_GET['jobId'])) {
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-    /* function getCookie(name) {
-        const cookies = document.cookie.split('; ');
-        for (const cookie of cookies) {
-            const [cookieName, cookieValue] = cookie.split('=');
-            if (cookieName === name) {
-                return cookieValue;
-            }
-        }
-        return null;
-    } */
+
     function extractAndPostData() {
         var currentURL = window.location.href;
         // Extract text values
@@ -289,7 +280,7 @@ if (isset($_GET['jobId'])) {
 
         // Create FormData object
         var formData = new FormData();
-        //const userId = getCookie('userId');
+     
         // Append text values to FormData
         formData.append('email', email);
         formData.append('fullname', fullname);
@@ -311,11 +302,11 @@ if (isset($_GET['jobId'])) {
                 console.log(response);
                 if(response.message=='already applied for this job'){
                     alert('You have already applied for this job.')
-                    window.location.href = "http://localhost/tnm_recruitment_portal/day2/adminlte/candidate/manage_applications.php";
+                    window.location.href = "http://localhost/tnm_recruitment_portal/portal/candidate/manage_applications.php";
                 }
                 else{
                     alert('Application submitted successfully!')
-                    window.location.href = "http://localhost/tnm_recruitment_portal/day2/adminlte/candidate/manage_applications.php";
+                    window.location.href = "http://localhost/tnm_recruitment_portal/portal/candidate/manage_applications.php";
                 }
                 
             },

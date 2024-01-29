@@ -1,13 +1,3 @@
-<form method="POST" action="manage_profile.php" enctype="multipart/form-data">
-
-	<div class="form-group">
-		<label for="profilep">Update profile picture</label>
-		<input type="file" name="profilep" id="profilep" class="form-control" accept = ".jpg, .png, .jpeg">
-	</div>
-	<button type="submit" name="profilep_pic" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Update</button>
-</form>
-
-
 <?php
 	include('dbcon.php');
 
@@ -50,7 +40,7 @@
  */
 
  
-if (isset($_POST['profilep_pic']) == 'POST') {
+if (isset($_POST['update_pic'])) {
     $filename = $_FILES["profilep"]["name"];
     $tempname = $_FILES["profilep"]["tmp_name"];  
 	
@@ -61,10 +51,12 @@ if (isset($_POST['profilep_pic']) == 'POST') {
      if (move_uploaded_file($tempname, $folder)) {
 
         $msg = "Profile Picture updated successfully";
+        echo "<script type='text/javascript'>document.location.href='../manage_profile.php';</script>";
 
     }else{
 
         $msg = "Failed to update profile Picture";
+        echo "<script type='text/javascript'>document.location.href='../manage_profile.php';</script>";
     }
 }
 ?>

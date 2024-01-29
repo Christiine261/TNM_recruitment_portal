@@ -35,8 +35,7 @@
 		<script src="../assets/bower_components/Flot/jquery.flot.pie.js"></script>
 		<!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
 		<script src="../assets/bower_components/Flot/jquery.flot.categories.js"></script>
-		<!-- PACE -->
-		<script src="../assets/bower_components/PACE/pace.min.js"></script>
+
 		<!-- Morris.js charts -->
 		<script src="../assets/bower_components/raphael/raphael.min.js"></script>
 		<script src="../assets/bower_components/morris.js/morris.min.js"></script>

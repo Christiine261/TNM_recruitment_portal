@@ -75,77 +75,71 @@
 								</div>
 								
 								<div class="col-lg-12 col-md-12"><br>
-									<table  id="example1"  class="table table-hover table-striped table-bordered table-responsive">
+									<table id="example1" class="table table-hover table-striped table-bordered table-responsive">
 										<thead>
 											<tr>
 												<th style="width:2px;">No.</th>
-												
 												<th>Name</th>
-												
 												<th>Email</th>
 												<th>Job title</th>
-												<th>score</th>
-											</tr>                                                             
+												<th>Score</th>
+												<th>Recommendation</th>
+											</tr>
 										</thead>
 										<tbody>
 											<?php
-													include('inc/dbcon.php');
-												if (isset($_POST['Submit']) == 'POST') {
-														$jobTitle = $_POST['job_id'];
-													
-														$sw = "SELECT * FROM jobs where job_id = '$jobTitle'";
-														$r = $conn->query($sw);
-														$rs = $r->fetch_assoc();
-														$job = $rs['job_title'];
+											include('inc/dbcon.php');
+											if (isset($_POST['Submit']) == 'POST') {
+												$jobTitle = $_POST['job_id'];
 
-														$ssql = "SELECT * FROM job_applications where job_id = '$jobTitle'
-														ORDER BY score DESC";
-														$rre = $conn->query($ssql);
-														$count = 0;
-														while ($roww = $rre->fetch_assoc()) {
-															$count += 1;
-															
-															echo "
-																<tr>
-																	<td>".$count."</td>
-																	<td>".$roww['fullname']."</td>
-																	<td>".$roww['email']."</td>
-																	<td>".$job."</td>
-																	<td>".$roww['score']."</td>
-																	
-																</tr>
-															
-															
-															";
-														}
-													
-												}else{
+												$sw = "SELECT * FROM jobs where job_id = '$jobTitle'";
+												$r = $conn->query($sw);
+												$rs = $r->fetch_assoc();
+												$job = $rs['job_title'];
 
-													$ssql = "SELECT * FROM job_applications INNER JOIN jobs ON job_applications.job_id = jobs.job_id
+												$ssql = "SELECT * FROM job_applications where job_id = '$jobTitle'
 														ORDER BY score DESC";
-														$rre = $conn->query($ssql);
-														$count = 0;
-														while ($roww = $rre->fetch_assoc()) {
-															$count += 1;
-															
-															echo "
-																<tr>
-																	<td>".$count."</td>
-																	<td>".$roww['fullname']."</td>
-																	<td>".$roww['email']."</td>
-																	<td>".$roww['job_title']."</td>
-																	<td>".$roww['score']."</td>
-																	
-																</tr>
-															
-															
-															";
-														}
+												$rre = $conn->query($ssql);
+												$count = 0;
+												while ($roww = $rre->fetch_assoc()) {
+													$count += 1;
+													$recommendation = ($roww['score'] >= 50) ? 'Recommended' : 'Not Recommended';
+
+													echo "
+														<tr>
+															<td>".$count."</td>
+															<td>".$roww['fullname']."</td>
+															<td>".$roww['email']."</td>
+															<td>".$job."</td>
+															<td>".$roww['score']."</td>
+															<td>".$recommendation."</td>
+														</tr>";
 												}
-												?>
+											} else {
+												$ssql = "SELECT * FROM job_applications INNER JOIN jobs ON job_applications.job_id = jobs.job_id
+															ORDER BY score DESC";
+												$rre = $conn->query($ssql);
+												$count = 0;
+												while ($roww = $rre->fetch_assoc()) {
+													$count += 1;
+													$recommendation = ($roww['score'] >= 50) ? 'Recommended' : 'Not Recommended';
+
+													echo "
+														<tr>
+															<td>".$count."</td>
+															<td>".$roww['fullname']."</td>
+															<td>".$roww['email']."</td>
+															<td>".$roww['job_title']."</td>
+															<td>".$roww['score']."</td>
+															<td>".$recommendation."</td>
+														</tr>";
+												}
+											}
+											?>
 										</tbody>
 									</table>
 								</div>
+
 							</div>
 						</div>
 						<div class="box-footer">

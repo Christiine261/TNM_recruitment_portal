@@ -1,7 +1,8 @@
-<?php //include('inc/session.php'); ?>
+
 <?php include('inc/header.php'); ?>
 <?php include('inc/navbar.php'); ?>
 <?php include('inc/sidebar.php'); ?>
+
 
 
 
@@ -10,12 +11,12 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				MANAGE USERS
+				JOB POSTS
 				<small><?php //print_r($_POST);?></small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="manage_users.php"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active">Manage Users</li>
+				<li class="active">Job posts</li>
 			</ol>
 			<hr style="border-color: green;"/>
 		</section>
@@ -38,7 +39,7 @@
 							<h2 class="box-title pull-left"><b>Available Jobs</b></h2>
 							
 							<div class="box-tools pull-right">
-								<a data-target="#import_users" data-toggle="modal" class="btn btn-flat btn-success pull-right"><i class="fa fa-upload"></i><span>&nbsp;<b>UPLOAD</b></span></a><br/>
+								
 							</div>
 						</div>
 						<!-- /.box-header -->
@@ -69,7 +70,8 @@
 									        include('inc/dbcon.php');
 
 									        // Get the user's ID from the session
-									        $userID = 1;
+									        
+											$userId=$_SESSION['user_id'];
 
 									        $sql = "SELECT * FROM jobs";
 
@@ -89,14 +91,14 @@
 									                    <td>" . $row['deadline_date'] . "</td>
 									                    <td>" . $row['status'] . "</td>
 									                    <td>  
-									                        <a class='btn btn-primary' href='#job_details_". $row['job_id']."' data-toggle='modal'>
+									                        <a class='btn btn-primary' href='#job_details_".$row['job_id']."' data-toggle='modal'>
 									                            <i class='fa fa-eye'></i>
 									                            <span>View Details</span>
 									                        </a>
 									                    </td>
 									                </tr>";
 
-													include("inc/user_modal.php");
+													include('inc/user_modal.php');	
 									        }
 									    ?>
 									</tbody>
@@ -104,9 +106,6 @@
 
 								</div>
 							</div>
-						</div>
-						<div class="box-footer">
-
 						</div>
 					</div>
 				</div>
@@ -118,8 +117,10 @@
 
 	</div>
 
-<?php include('inc/user_modal.php');?>
+<script src="../assets/landingpage/js/jquery.min.js"></script>
+<script src="../assets/landingpage/js/bootstrap.min.js"></script>
 
 <?php include('inc/footer.php'); ?>
 <?php include('../inc/scripts.php'); ?>
+
 

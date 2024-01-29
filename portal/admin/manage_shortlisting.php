@@ -1,4 +1,21 @@
-<?php include('inc/header.php'); ?>
+<?php 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP; 
+use PHPMailer\PHPMailer\Exception;
+
+require_once __DIR__ . '/inc/vendor/phpmailer/src/Exception.php';
+require_once __DIR__ . '/inc/vendor/phpmailer/src/PHPMailer.php';
+require_once __DIR__ . '/inc/vendor/phpmailer/src/SMTP.php'; 
+
+
+
+
+
+include('inc/header.php'); 
+
+
+?>
 
 <?php include('inc/navbar.php'); ?>
 <?php include('inc/sidebar.php'); ?>
@@ -158,7 +175,7 @@
 
 												// Fetch pending job applications based on the selected job and order by score
 												$applicationsQuery = "SELECT * FROM job_applications
-																	WHERE job_id = '$job_id' AND status = 'pending'
+																	WHERE job_id = '$job_id' AND status = 'pending' AND recommendation = 'recommended'
 																	ORDER BY score DESC
 																	LIMIT $shortlist_count";
 
@@ -182,6 +199,9 @@
 														$conn->query($updateStatusQuery);
 													}
 
+
+
+
 													// Insert shortlisted applications into the 'shortlisted' table
 													foreach ($shortlistedApplications as $application) {
 														$insertQuery = "INSERT INTO shortlisted (fullname, email, job_title, job_id)
@@ -189,10 +209,73 @@
 																				(SELECT job_title FROM jobs WHERE job_id = '$job_id'), '$job_id')";
 
 														$conn->query($insertQuery);
-													}
+														$full_name = $application['fullname'];
+														$email = $application['email'];
+														$jobsss = $application['job_title'];
+														
+														$message ="
+														<b>Dear $full_name</b><br/>
+														<br><b></b>
+														<b>
+															We hope this message finds you well. We are pleased to inform you that after careful consideration of your application for the $jobsss position at TNM Malawi, we are impressed with your qualifications and experience, and we are excited to let you know that you have been shortlisted for the next stage of our hiring process.
 
-													// Display shortlisted applications to the admin
+															Interview Details:
+															- Date: [Date]
+															-Time:** [Time]
+															- Location: [Address or Virtual Meeting Details]
+
+															During the interview, you will have the opportunity to discuss your skills, experiences, and how they align with the requirements of the position. We encourage you to prepare for the interview by researching our company, understanding the role, and thinking about how your unique strengths can contribute to our team.
+
+															If the provided interview schedule is inconvenient for you, please contact us as soon as possible, and we will do our best to accommodate your availability.
+
+															We congratulate you on reaching this stage, and we look forward to meeting with you to explore the possibility of you joining our team at TNM Malawi.<br>
+
+															Best Regards,															
+																									
+															<br>
+															HRM TNM Malawi<br>
+									
+													   ";
+									
+														// passing true in constructor enables exceptions in PHPMailer
+										
+														$mail = new PHPMailer(true);
+										
+														try {
+															// Server settings
+															// $mail->SMTPDebug = SMTP::DEBUG_SERVER; // for detailed debug output
+															$mail->isSMTP();
+															$mail->Host = 'smtp.gmail.com';
+															$mail->SMTPAuth = true;
+															$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+															$mail->Port = 587;
+										
+															$mail->Username = 'christiechagoe@gmail.com'; // YOUR gmail email
+															$mail->Password = 'ieip gdio kzjm apgc'; // YOUR gmail password
+										
+															// Sender and recipient settings
+															$mail->setFrom('logahstankey@gmail.com', 'TNM RECUITMENTS');
+															$mail->addAddress($email, 'Receiver Name');
+															$mail->addReplyTo('logahstankey@gmail.com', 'TNM RECUITMENTS'); // to set the reply to
+										
+															// Setting the email content
+															$mail->IsHTML(true);
+															$mail->Subject = "Congratulations! You've Been Shortlisted for a Job Interview at TNM Malawi";
+															$mail->Body = $message;
+															$mail->AltBody = 'Plain text message body for non-HTML email client. Gmail SMTP email body.';
+										
+															$mail->send();
+															$_SESSION['success'] = 'Account Successfully Created Please login to your email to get activation code';
+															
+														}catch (Exception $e) {
+															echo "Error in sending email. Mailer Error: {$mail->ErrorInfo}";
+															
+														}
+														
+													}
 													
+
+													// Display shortlisted applications to the admin													
 															
 													foreach ($shortlistedApplications as $application) {
 														// Fetch job title from the 'jobs' table based on 'job_id'
