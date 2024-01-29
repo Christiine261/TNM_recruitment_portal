@@ -97,7 +97,29 @@
 	<section class="content">
 		<!-- Small boxes (Stat box) -->
 		<div class="col-lg-3 col-xs-6">
-						<!-- small box -->
+			<!-- small box -->
+			<div class="small-box bg-aqua">
+				<div class="inner">
+
+				<?php
+					include("inc/dbcon.php");
+					// Query to count the number of users Registered
+					$countQuery = "SELECT * FROM jobs";
+					$result = $conn->query($countQuery);						
+				?>
+				<h3><?php echo $result->num_rows; ?></h3>
+
+				<p>JOB POSTS</p>
+				</div>
+				<div class="icon">
+				<i class="ion ion-briefcase"></i>
+				</div>
+				<a href="manage_jobs.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
+		</div>
+		<!-- ./col -->
+		<div class="col-lg-3 col-xs-6">
+			<!-- small box -->
 			<div class="small-box bg-green">
 				<div class="inner">
 				<?php
@@ -115,20 +137,49 @@
 				</div>
 				<a href="manage_users.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 			</div>
-
 		</div>
 		<!-- ./col -->
 		<div class="col-lg-3 col-xs-6">
+			<!-- small box -->
+			<div class="small-box bg-yellow">
+				<div class="inner">
+				<?php
+					include("inc/dbcon.php");
+					// Query to count the number of job applications
+					$countQuery = "SELECT * FROM job_applications";
+					$result = $conn->query($countQuery);						
+				?>
+				<h3><?php echo $result->num_rows; ?></h3>
 
+				<p>job applications</p>
+				</div>
+				<div class="icon">
+				<i class="ion ion-document-text"></i>
+				</div>
+				<a href="manage_applications.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
 		</div>
+
 		<!-- ./col -->
 		<div class="col-lg-3 col-xs-6">
+			<!-- small box -->
+			<div class="small-box bg-red">
+				<div class="inner">
+				<?php
+					include("inc/dbcon.php");
+					// Query to count the number of users portfolio
+					$countQueryw = "SELECT * FROM user_portfolio";
+					$resultw = $conn->query($countQueryw);						
+				?>
+				<h3><?php echo $resultw->num_rows; ?></h3>
 
-		</div>
-
-		<!-- ./col -->
-		<div class="col-lg-3 col-xs-6">
-
+				<p>User portfolios</p>
+				</div>
+				<div class="icon">
+				<i class="ion ion-person"></i>
+				</div>
+				<a href="manage_users.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+			</div>
 		</div>
 		<!-- ./col -->
 		<!-- Main row -->

@@ -70,12 +70,10 @@ session_start();
 
 							<h3 class="profile-username text-center"><?php echo $name?></h3>
 
-							<p class="text-muted text-center"><?php echo $email?></p>
-
-							<p class="text-muted text-center" class="label label-info">Adminstrator</p>
+							<p class="text-muted text-center"><?php echo $profe?></p>
 
 
-							
+							<a href="<?php echo $cv ?>" class = "btn btn-success btn-block" target="_blank">View your CV</a>
 						</div>
 					
 					</div>
@@ -91,14 +89,14 @@ session_start();
 							<strong><i class="fa fa-book margin-r-5"></i> Education</strong>
 
 							<p class="text-muted">
-							B.S. in Information Technology
+							<?php echo $edu ?> from <?php echo $inst?>
 							</p>
 
 							<hr>
 
 							<strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
 
-							<p class="text-muted">Blantyre, Malawi South</p>
+							<p class="text-muted"><?php echo $address?></p>
 
 							<hr>
 
@@ -106,8 +104,7 @@ session_start();
 
 							<p>
 							
-							<span class="label label-info">Web development</span>
-							<span class="label label-info">php</span>
+							<span class="label label-info"><?php echo $skills?></span>
 							
 							</p>
 

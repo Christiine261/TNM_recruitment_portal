@@ -27,49 +27,12 @@
 						<i class="fa fa-group"></i> <span>Users</span>
 					</a>
 				</li>
-                <li>
-					<a href="manage_jobs.php">
-						<i class="fa fa-balance-scale"></i> <span>Job Posts</span>
-					</a>
-				</li>
-				
-				<li class="treeview">
-					<a href="#">
-						<i class="fa fa-newspaper-o"></i>
-						<span>Manage Application</span>
-						<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-						<li><a href="manage_applications.php"><i class="fa fa-circle-o"></i>Applications</a></li>
-						<li><a href="manage_shortlisting.php"><i class="fa fa-circle-o"></i>Shortlisting</a></li>
-					</ul>
-				</li>
-				
-				<li class="treeview">
-					<a href="#">
-						<i class="fa fa-newspaper-o"></i>
-						<span>Manage Interviews</span>
-						<span class="pull-right-container">
-						<i class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-					<ul class="treeview-menu">
-						<li><a href="#"><i class="fa fa-circle-o"></i>Add Panel</a></li>
-						<li><a href="#"><i class="fa fa-circle-o"></i>Assessment</a></li>
-					</ul>
-				</li>
-				
-				<li class="treeview">
-					<a href="#">
-						<i class="fa fa-newspaper-o"></i>
-						<span>Onboarding</span>
-						<span class="pull-right-container">
-						</span>
-					</a>
-				</li>
 				<li>
+					<a href="login_history.php">
+						<i class="fa fa-group"></i> <span>Manage Logs</span>
+					</a>
+				</li>
+               <li>
 					<a href="manage_profile.php">
 						<i class="fa fa-user"></i> <span>Profile</span>
 					</a>

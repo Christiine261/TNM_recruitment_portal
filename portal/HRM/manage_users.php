@@ -130,6 +130,10 @@
 															<td>".$row['email']."</td>
 															<td>". $row['status']."</td>
 															<td>
+																<a class='btn btn-primary' href='#user_details_".$row['user_id']."'data-toggle='modal' >
+																	<i class='fa fa-eye'></i>
+																	<span>View Portfolio</span>
+																</a>
 																<a class='btn btn-$buttonClass' href='#user_$action".$row['user_id']."' data-toggle='modal' $stat>
 																	<i class='fa fa-$iconClass'></i>
 																	<span>$modalID</span>

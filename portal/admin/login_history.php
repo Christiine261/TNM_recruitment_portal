@@ -8,12 +8,12 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				MANAGE USERS
+				MANAGE USER LOGS
 				<small><?php //print_r($_POST);?></small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="manage_users.php"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active">Manage Users</li>
+				<li class="active">Manage User logs</li>
 			</ol>
 			<hr style="border-color: green;"/>
 		</section>
@@ -33,11 +33,8 @@
 					<div class="box box-success">
 						<div class="box-header with-border">
 										
-							<h2 class="box-title pull-left"><b>LIST OF USERS</b></h2>
+							<h2 class="box-title pull-left"><b>LIST OF USER LOGS</b></h2>
 							
-							<div class="box-tools pull-right">
-								<!-- <a data-target="#import_users" data-toggle="modal" class="btn btn-flat btn-success pull-right"><i class="fa fa-upload"></i><span>&nbsp;<b>UPLOAD</b></span></a><br/> -->
-							</div>
 						</div>
 						<!-- /.box-header -->
 						<div class="box-body">
@@ -75,77 +72,32 @@
 											<tr>
 												<!-- <th style="width:2px;">No.</th> -->
 												<th>ID</th>
-												<th>Fullname</th>
-												<th>Email</th>
-												<th>Status</th>
-												<th>Action</th>
+												<th>USER NAME</th>
+												<th>LOGIN Time</th>
+												<th>LOGOUT Time</th>
 											</tr>                                                             
 										</thead>
 										<tbody>
-											<?php
-												include('inc/dbcon.php');
+											<?php 
+												
+											include('inc/dbcon.php');
 
-												$sql = "SELECT * FROM users";
-												$result = $conn->query($sql);
-												$count = 0;
-												while ($row = $result->fetch_assoc()) {
-													$count += 1;
-													
-
-													$userId = $row['user_id'];
-													$userStatus = $row['status'];
-
-													if ($userStatus == 'Active') {
-														$buttonClass = 'danger';
-														$buttonClass1 = 'success';
-														$iconClass = 'ban';
-														$iconClass1 = 'clock-o';
-														$action = 'deactivate_';
-														$action1 = 'extend_';
-														$action2 = '';
-														$modalID = 'deactivate';
-														$status = 'success';
-														$stat = '';
-														$stat1 = '';
-														$stat2 = 'disabled';
-													} else{
-														$buttonClass = 'success';
-														$buttonClass1 = 'success';
-														$iconClass = 'check';
-														$iconClass1 = 'clock-o';
-														$action = 'activate_';
-														$action1 = '';
-														$action2 = 'edit_';
-														$modalID = 'activate';
-														$status = 'warning';
-														$stat = '';
-														$stat1 = 'disabled';
-														$stat2 = '';
-
-													}
-													echo "
-														<tr>
-															<td>".$count."</td>
-															<td>".$row['full_name']."</td>
-															<td>".$row['email']."</td>
-															<td>". $row['status']."</td>
-															<td>
-																<a class='btn btn-$buttonClass' href='#user_$action".$row['user_id']."' data-toggle='modal' $stat>
-																	<i class='fa fa-$iconClass'></i>
-																	<span>$modalID</span>
-																</a>
-															</td>
-														</tr>
-													
-													
+											$sql = "SELECT * FROM userlog";
+											$result = $conn->query($sql);
+											$count = 0;
+											while ($row = $result->fetch_assoc()) {
+												$count += 1;
+												echo "
+													<tr>
+														<td>".$count."</td>
+														<td>".$row['full_name']."</td>
+														<td>".$row['login_time']."</td>
+														<td>".$row['logout_time']."</td>
+														
+													</tr>
 													";
+											} ?>
 
-													 include('inc/user_modal.php'); 
-													 
-
-												}
-
-											?>
 										</tbody>
 									</table>
 								</div>
@@ -162,7 +114,7 @@
 
 	</div>
 
-<?php include('inc/user_modal.php');?>
+
 
 <?php include('inc/footer.php'); ?>
 <?php include('inc/scripts.php'); ?>

@@ -2,6 +2,7 @@
 session_start();
 include_once("dbcon.php");
 
+
 // Process login form submission
 if (isset($_POST['login_btn'])) {
     
@@ -29,24 +30,33 @@ if (isset($_POST['login_btn'])) {
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['role'] = $row['role'];
+                $_SESSION['full_name'] = $row['full_name'];
                 
                 
                 if ($_SESSION['role'] == 1) {
                     $_SESSION['admin'] = $row['user_id'];
-                    /* $activities = "Logged in";
+                    $activities = "Logged in";
                     $login_time = date("Y-m-d H:i:sa");
-                    $sql = "INSERT INTO userlog (userlog_id, user_id, login_time) VALUES ('', '".$_SESSION['admin']."', '".$login_time."')"; 
-                    $conn->query($sql); */
+                    $sql = "INSERT INTO userlog (userlog_id, user_id, full_name, login_time) VALUES ('', '".$_SESSION['admin']."', '".$_SESSION['full_name']."', '".$login_time."')"; 
+                    $conn->query($sql);
                     echo "<script>window.location.href = '../admin/index.php';</script>";
+
+                }else if($_SESSION['role'] == 2) {
+                    $_SESSION['HRM'] = $row['user_id'];
+                    $activities = "Logged in";
+                    $login_time = date("Y-m-d H:i:sa");
+                    $sql = "INSERT INTO userlog (userlog_id, user_id, full_name, login_time) VALUES ('', '".$_SESSION['HRM']."', '".$_SESSION['full_name']."', '".$login_time."')"; 
+                    $conn->query($sql);
+                    echo "<script>window.location.href = '../HRM/index.php';</script>";
     
-                } elseif ($_SESSION['role'] == 2) {
+                } elseif ($_SESSION['role'] == 3) {
                     $_SESSION['candidate'] = $row['user_id'];
-                  /*   $activities = "Logged in";
-                    $login_time = date("H:i:sa");
-                    $sql = "INSERT INTO userlog (userlog_id, user_id, login_time) VALUES ('', '".$_SESSION['candidate']."', '".$login_time."')"; 
-                    $conn->query($sql); */
+                    $activities = "Logged in";
+                    $login_time = date("Y-m-d H:i:sa");
+                    $sql = "INSERT INTO userlog (userlog_id, user_id, full_name, login_time) VALUES ('', '".$_SESSION['candidate']."', '".$_SESSION['full_name']."', '".$login_time."')"; 
+                    $conn->query($sql);
                     echo "<script>window.location.href = '../candidate/index.php';</script>";
-                }          
+                } 
 
             }
             
