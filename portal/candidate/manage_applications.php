@@ -94,74 +94,74 @@ if (isset($_GET['jobId'])) {
 			<!--<hr style="border-color: green;"/> -->
 			<!-- Main row -->
 			<div class="row">
-			<div class="col-md-3">
+				<div class="col-md-3">
 
-				<div class="box box-success no-padding pull-left">
-					
-					<div class="box-header with-border">
+					<div class="box box-success no-padding pull-left">
 						
-						<h2 class="box-title pull-left"><b>Application Form</b></h2>
-						<div class="row">
-							<div class="col-md-12">
-								
+						<div class="box-header with-border">
+							
+							<h2 class="box-title pull-left"><b>Application Form</b></h2>
+							<div class="row">
+								<div class="col-md-12">
+									
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="box-body"> 
+						<div class="box-body"> 
 
-						<div class="form-group">
+							<div class="form-group">
 
-							<label for="exampleInputPassword1">Job Title</label>
-							<select class="form-control select2" id="jobds" name="jobId" required>
-								<option selected="selected" disabled>Select Job Title</option>
-								<?php
-									// Add your database connection code here
-									include('../inc/dbcon.php');
+								<label for="exampleInputPassword1">Job Title</label>
+								<select class="form-control select2" id="jobds" name="jobId" required>
+									<option selected="selected" disabled>Select Job Title</option>
+									<?php
+										// Add your database connection code here
+										include('../inc/dbcon.php');
 
-									// Fetch distinct job titles from the jobs table
-									$jobTitlesQuery = "SELECT * FROM jobs";
-									$jobTitlesResult = $conn->query($jobTitlesQuery);
+										// Fetch distinct job titles from the jobs table
+										$jobTitlesQuery = "SELECT * FROM jobs";
+										$jobTitlesResult = $conn->query($jobTitlesQuery);
 
-									if ($jobTitlesResult->num_rows > 0) {
-										while ($rowss = $jobTitlesResult->fetch_assoc()) {
-											echo "<option value='".$rowss['job_id']."'>".$rowss['job_title']."</option>";
+										if ($jobTitlesResult->num_rows > 0) {
+											while ($rowss = $jobTitlesResult->fetch_assoc()) {
+												echo "<option value='".$rowss['job_id']."'>".$rowss['job_title']."</option>";
 
+											}
+										} else {
+											echo "<option value=''>No job titles found</option>";
 										}
-									} else {
-										echo "<option value=''>No job titles found</option>";
-									}
-									?>
-							</select>
-						</div>
-						<input type="hidden" id="userId" class="form-control" name="userId" value="<?php echo $user_id; ?>">
+										?>
+								</select>
+							</div>
+							<input type="hidden" id="userId" class="form-control" name="userId" value="<?php echo $user_id; ?>">
 
-						<div class="form-group">
-							<label for="exampleInputPassword1">Full Name</label>
-							<input type="text" class="form-control" name="fullname" id="fullname" placeholder="name..." value="<?php echo $loggedInUserName; ?>" required>  
+							<div class="form-group">
+								<label for="exampleInputPassword1">Full Name</label>
+								<input type="text" class="form-control" name="fullname" id="fullname" placeholder="name..." value="<?php echo $loggedInUserName; ?>" required>  
+							</div>
+							<div class="form-group">
+								<label for="exampleInputPassword1">Email</label>
+								<input type="email" class="form-control" name="email" id="email" placeholder="Email..." value="<?php echo $loggedInUserEmail; ?>" required>  
+							</div> 
+							
+							<div class="form-group">
+								<label for="exampleInputPassword1">Upload Your CV</label>
+								<input type="file" class="form-control" name="cv_file_path" id="cv_file_path" accept=".pdf" required>  
+							</div> 
+							<div class="form-group">
+								<label for="exampleInputPassword1">Upolad Cover Letter</label>
+								<input type="file" class="form-control" name="cover_letter" id="cover_letter" accept=".pdf" required>  
+							</div>         
+							
+
 						</div>
-						<div class="form-group">
-							<label for="exampleInputPassword1">Email</label>
-							<input type="email" class="form-control" name="email" id="email" placeholder="Email..." value="<?php echo $loggedInUserEmail; ?>" required>  
-						</div> 
-						
-						<div class="form-group">
-							<label for="exampleInputPassword1">Upload Your CV</label>
-							<input type="file" class="form-control" name="cv_file_path" id="cv_file_path" accept=".pdf" required>  
-						</div> 
-						<div class="form-group">
-							<label for="exampleInputPassword1">Upolad Cover Letter</label>
-							<input type="file" class="form-control" name="cover_letter" id="cover_letter" accept=".pdf" required>  
-						</div>         
-						
+
+						<div class="box-footer">                            
+							<button type="submit" onclick="extractAndPostData()" class="btn btn-flat btn-success pull-right" name=""><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Apply</b></button><span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span>                                           
+							<button type="reset" class="btn btn-flat btn-danger pull-right " data-dismiss="modal"><i class="fa fa-times-circle-o"></i>&nbsp;&nbsp;<b>CANCEL</b></button>  
+						</div>
 
 					</div>
-
-					<div class="box-footer">                            
-						<button type="submit" onclick="extractAndPostData()" class="btn btn-flat btn-success pull-right" name=""><i class="fa fa-plus"></i>&nbsp;&nbsp;<b>Apply</b></button><span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span>                                           
-						<button type="reset" class="btn btn-flat btn-danger pull-right " data-dismiss="modal"><i class="fa fa-times-circle-o"></i>&nbsp;&nbsp;<b>CANCEL</b></button>  
-					</div>
-
-				</div>
 
 				</div>
 
@@ -302,11 +302,11 @@ if (isset($_GET['jobId'])) {
                 console.log(response);
                 if(response.message=='already applied for this job'){
                     alert('You have already applied for this job.')
-                    window.location.href = "http://localhost/tnm_recruitment_portal/portal/candidate/manage_applications.php";
+                    window.location.href = "http://localhost/portal/candidate/manage_applications.php";
                 }
                 else{
                     alert('Application submitted successfully!')
-                    window.location.href = "http://localhost/tnm_recruitment_portal/portal/candidate/manage_applications.php";
+                    window.location.href = "http://localhost/portal/candidate/manage_applications.php";
                 }
                 
             },

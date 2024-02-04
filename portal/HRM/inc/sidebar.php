@@ -24,7 +24,7 @@
 				<li class="header">MAIN NAVIGATION</li>
 				<li>
 					<a href="manage_users.php">
-						<i class="fa fa-group"></i> <span>Users</span>
+						<i class="fa fa-group"></i> <span>Portfolios</span>
 					</a>
 				</li>
                 <li>
@@ -57,7 +57,9 @@
 					</a>
 					<ul class="treeview-menu">
 						<li><a href="#"><i class="fa fa-circle-o"></i>Add Panel</a></li>
-						<li><a href="#"><i class="fa fa-circle-o"></i>Assessment</a></li>
+						<li><a href="#"><i class="fa fa-circle-o"></i>Schedule Interviews</a></li>
+						<li><a href="#"><i class="fa fa-circle-o"></i>Conduct INterviews</a></li>
+
 					</ul>
 				</li>
 				

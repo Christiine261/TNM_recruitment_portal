@@ -82,10 +82,15 @@
 		formData.append('fullname', fullname);
 		formData.append('user_id', userId);
 		formData.append('job_id', jobId);
-        formData.append('cv', cv_file_path);
-        formData.append('cover_letter', cover_letter);
 
-		
+		if (cv_file_path) {
+            formData.append('cv', cv_file_path, cv_file_path.name);
+        }
+
+        if (cover_letter) {
+            formData.append('cover_letter', cover_letter, cover_letter.name);
+        }
+        
 
 		
 		//const userId = getCookie('userId');
@@ -104,11 +109,11 @@
 				console.log(response);
 				if(response.message=='already applied for this job'){
 					alert('You have already applied for this job.')
-					window.location.href = "http://tnm_recruitment_portal/portal/candidate/view_jobs.php";
+					window.location.href = "http://localhost/portal/candidate/view_jobs.php";
 				}
 				else{
 					alert('Application submitted successfully!')
-					window.location.href = "http://localhost/tnm_recruitment_portal/portal/candidate/view_jobs.php";
+					window.location.href = "http://localhost/portal/candidate/view_jobs.php";
 				}
 				
 			},

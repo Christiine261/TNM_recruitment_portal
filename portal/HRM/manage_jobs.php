@@ -101,7 +101,7 @@ while ($row = $st->fetch_assoc()) {
 										<thead>
 											<tr>
 												<th style="width:2px;">No.</th>
-												<th>Job code</th>
+												
 												<th>Job Post</th>
 												<th>Deadline</th>
 												<th>Status</th>
@@ -167,7 +167,7 @@ while ($row = $st->fetch_assoc()) {
 													echo "
 														<tr>
 															<td>".$count."</td>
-															<td>".$row['job_code']."</td>
+															
 															<td>".$row['job_title']."</td>
 															<td>".$row['deadline_date']."</td>
 															<td>

@@ -163,7 +163,7 @@ session_start();
 													<div class="form-group">
 														<div class="row">
 															<div class="col-md-4">
-																<label for="Degree">Degree:</label>
+																<label for="Degree">Qualification:</label>
 																<input type="text" class="form-control" name="Education[Degree][]" required>
 															</div>
 															<div class="col-md-4">

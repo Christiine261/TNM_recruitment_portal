@@ -105,7 +105,7 @@ include('inc/navbar.php');
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="login.php" class="btn btn-flat btn-success pull-right"><i class="fa fa-check-square-o"></i>&nbsp;&nbsp;<b>Apply</b></a><span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     </div>
                 </div>
             </div>

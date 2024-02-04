@@ -1,7 +1,14 @@
 <?php include('inc/header.php'); ?>
 <?php include('inc/navbar.php'); ?>
 <?php include('inc/sidebar.php'); ?>
+<?php      
+     if(isset($_GET['job_id'])){
+       $job_id = $_GET['job_id'];
+     }
 
+?> 
+<!-- Select2 -->
+<link rel="stylesheet" href="../assets/bower_components/select2/dist/css/select2.min.css">	
 <style type="text/css">
 	.mt20{
 		margin-top:20px;
@@ -185,10 +192,10 @@
 		<!-- Main row -->
 		<div class="row">
 			<!-- Left col -->
-			<section class="col-lg-12 connectedSortable">
+			<section class="col-md-12 connectedSortable">
 				<!-- quick email widget -->
 				<div class="col-md-4">
-					<div class="box box-info">
+					<div class="box box-success">
 						<div class="box-header">
 						<i class="fa fa-briefcase"></i>
 
@@ -213,9 +220,9 @@
 
 				
 				</div>
-				<div class="col-md-12">
+				<div class="col-md-8">
 					<!-- quick email widget -->
-					<div class="box box-info">
+					<div class="box box-success">
 						<div class="box-header">
 						<i class="fa fa-briefcase"></i>
 
@@ -223,6 +230,33 @@
 						<!-- tools box -->
 						<div class="pull-right box-tools">
 							
+							<form class="form-inline">
+
+									<div class="form-group">
+										
+										<select class="form-control select2" id="select_job" required>
+											<option selected="selected" disabled>Select Job Title</option>
+											<?php
+												// Add your database connection code here
+												include('../inc/dbcon.php');
+
+												// Fetch distinct job titles from the jobs table
+												$jobTitlesQuery = "SELECT * FROM jobs";
+												$jobTitlesResult = $conn->query($jobTitlesQuery);
+
+												if ($jobTitlesResult->num_rows > 0) {
+													while ($rowss = $jobTitlesResult->fetch_assoc()) {
+														echo "<option value='" . $rowss['job_id'] . "'>" . $rowss['job_title'] . "</option>";
+
+													}
+												} else {
+													echo "<option value=''>No job titles found</option>";
+												}
+												?>
+										</select>
+										
+									</div>
+							</form>
 						</div>
 						<!-- /. tools -->
 						</div>
@@ -266,7 +300,7 @@
 	$jobs_counting1 = array();
 
 
-	$sql = "SELECT * FROM jobs ";
+	$sql = "SELECT * FROM jobs  WHERE job_id = '$job_id'";
 	$rquery_jobs = $conn->query($sql);
 
 	$user_active = array();
@@ -351,13 +385,22 @@
 <script src="../assets/bower_components/chart.js/Chart.js"></script>
 <!-- FastClick -->
 <script src="../assets/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- Select2 -->
+<script src="../assets/bower_components/select2/dist/js/select2.full.min.js"></script>
+		<!-- InputMask -->
 <!-- AdminLTE App -->
 <script src="../assets/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../assets/dist/js/demo.js"></script>
+<script src="../scrips.js"></script>
 <!-- page script -->
 
-
+<script>
+    $(function(){
+    $('#select_job').change(function(){
+        window.location.href = 'index.php?job_id='+$(this).val();
+    });
+    });
+</script>
 <script>
   $(function () {
 		

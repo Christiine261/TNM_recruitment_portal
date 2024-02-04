@@ -8,12 +8,12 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				MANAGE USERS
+				MANAGE PORTFOLIOS
 				<small><?php //print_r($_POST);?></small>
 			</h1>
 			<ol class="breadcrumb">
 				<li><a href="manage_users.php"><i class="fa fa-dashboard"></i> Home</a></li>
-				<li class="active">Manage Users</li>
+				<li class="active">Manage Portfolios</li>
 			</ol>
 			<hr style="border-color: green;"/>
 		</section>
@@ -33,7 +33,7 @@
 					<div class="box box-success">
 						<div class="box-header with-border">
 										
-							<h2 class="box-title pull-left"><b>LIST OF USERS</b></h2>
+							<h2 class="box-title pull-left"><b>PORTFOLIOS</b></h2>
 							
 							<div class="box-tools pull-right">
 								<!-- <a data-target="#import_users" data-toggle="modal" class="btn btn-flat btn-success pull-right"><i class="fa fa-upload"></i><span>&nbsp;<b>UPLOAD</b></span></a><br/> -->
@@ -74,10 +74,10 @@
 										<thead>
 											<tr>
 												<!-- <th style="width:2px;">No.</th> -->
-												<th>ID</th>
+												<th>No.</th>
 												<th>Fullname</th>
 												<th>Email</th>
-												<th>Status</th>
+												
 												<th>Action</th>
 											</tr>                                                             
 										</thead>
@@ -128,16 +128,13 @@
 															<td>".$count."</td>
 															<td>".$row['full_name']."</td>
 															<td>".$row['email']."</td>
-															<td>". $row['status']."</td>
+															
 															<td>
 																<a class='btn btn-primary' href='#user_details_".$row['user_id']."'data-toggle='modal' >
-																	<i class='fa fa-eye'></i>
-																	<span>View Portfolio</span>
+																	<i class='fa fa-bars'></i>
+																	<span>Details</span>
 																</a>
-																<a class='btn btn-$buttonClass' href='#user_$action".$row['user_id']."' data-toggle='modal' $stat>
-																	<i class='fa fa-$iconClass'></i>
-																	<span>$modalID</span>
-																</a>
+											
 															</td>
 														</tr>
 													

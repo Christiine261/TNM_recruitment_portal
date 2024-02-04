@@ -96,8 +96,6 @@
             </div>
             <div class="modal-footer">		
                 
-            
-                <button type="submit" name="apply" data-target="#apply_jobs_<?php echo $row['job_id']; ?>" data-toggle="modal" class="btn btn-flat btn-success pull-right"><i class="fa fa-check"></i>&nbsp;<b>APPLY</b></button><span class="pull-right">&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <button type="reset" class="btn btn-flat btn-danger pull-right " data-dismiss="modal"><i class="fa fa-times-circle-o"></i>&nbsp;<b>CANCEL</b></button>
                 <?php include('apply_modal.php');?>
             </div> 
